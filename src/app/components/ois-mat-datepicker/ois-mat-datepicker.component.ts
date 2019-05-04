@@ -10,10 +10,7 @@ const GEO_DATE_FORMAT = "DD-MM-YYYY";
     styleUrls: ['./ois-mat-datepicker.component.scss']
 })
 export class OisMatDatepickerComponent implements OnInit {
-    /**
-     * Input Date String
-     */
-    @Input() readonly date!: string;
+    @Input() readonly initialDate!: string | undefined | null;
     @Input() readonly label!: string;
     @Input() readonly controlName!: string;
     @Input() readonly form!: NgForm;
@@ -37,8 +34,8 @@ export class OisMatDatepickerComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this._momentDate = moment(this.date, GEO_DATE_FORMAT);
-        this.form.form.addControl(this.controlName, new FormControl(this.date));
+        this._momentDate = moment(this.initialDate!, GEO_DATE_FORMAT);
+        this.form.form.addControl(this.controlName, new FormControl(this.initialDate));
     }
 
     private updateFormControl(input: string) {
