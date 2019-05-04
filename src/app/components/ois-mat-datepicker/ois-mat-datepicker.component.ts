@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
-import {FormControl, NgForm} from '@angular/forms';
+import {FormControl, NgForm, ValidatorFn} from '@angular/forms';
 
 const GEO_DATE_FORMAT = "DD-MM-YYYY";
 
@@ -14,6 +14,7 @@ export class OisMatDatepickerComponent implements OnInit {
     @Input() readonly label!: string;
     @Input() readonly controlName!: string;
     @Input() readonly form!: NgForm;
+    @Input() readonly validators!: ValidatorFn[];
 
     private _momentDate: any;
 
@@ -35,7 +36,12 @@ export class OisMatDatepickerComponent implements OnInit {
 
     ngOnInit(): void {
         this._momentDate = moment(this.initialDate!, GEO_DATE_FORMAT);
-        this.form.form.addControl(this.controlName, new FormControl(this.initialDate));
+        this.initializeFormControl();
+    }
+
+    private initializeFormControl() {
+        const validators = (this.validators !== undefined) ? [...this.validators] : [];
+        this.form.form.addControl(this.controlName, new FormControl(this.initialDate, validators));
     }
 
     private updateFormControl(input: string) {

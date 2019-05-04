@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {NgForm, Validators} from '@angular/forms';
 
 
 @Component({
@@ -8,6 +8,7 @@ import {NgForm} from '@angular/forms';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    dateValidators = [Validators.required];
 
     dump(form: NgForm) {
         console.log(form.value);
