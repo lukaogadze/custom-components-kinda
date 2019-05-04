@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MAT_DATE_FORMATS} from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import { OisMatDatepickerComponent } from './components/ois-mat-datepicker/ois-mat-datepicker.component';
 
 export const KA_FORMAT = {
     parse: {
@@ -31,7 +32,8 @@ export const KA_FORMAT = {
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        OisMatDatepickerComponent
     ],
     imports: [
         BrowserModule,

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -8,10 +8,9 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    date!: FormControl;
 
-    dump() {
-        console.log(this.date.value.format("DD/MM/YYYY"));
+    dump(form: NgForm) {
+        console.log(form.value);
     }
 
 
